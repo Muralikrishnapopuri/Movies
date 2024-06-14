@@ -57,7 +57,7 @@ export default function Watch() {
                   </div>
 
             </div>
-            <div className='bottom'> <a className='bottom-red' href="#purchase" ><FaPlay/>Watch Full Movie</a><div id="bottom-black" className='bottom-black' onClick={document.getElementById("bottom-black").style.backgroundColor="darkgreen"}><AiOutlinePlus/>Add to WatchList</div> </div>
+            <div className='bottom'> <a className='bottom-red' href="#purchase" ><FaPlay/>Watch Full Movie</a><div id="bottom-black" className='bottom-black' onClick={()=>document.getElementById("bottom-black").style.backgroundColor="darkgreen"}><AiOutlinePlus/>Add to WatchList</div> </div>
  
                 
           </div>

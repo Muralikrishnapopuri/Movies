@@ -2,7 +2,7 @@
 import './App.css'
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
 import Login from './pages/login'
-import Signup from './pages/signup'
+// import Signup from './pages/signup'
 import Netflix from './pages/netflix'
 import Player from './pages/player'
 import Watch from './pages/watch';
@@ -10,6 +10,7 @@ import Upcoming from './pages/Upcoming'
 import Telugu from './pages/Telugu'
 import Hindi from './pages/Hindi'
 import English from './pages/English'
+import Signupp from './pages/Signupp'
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     <Routes>
       
       <Route exact path="/login" element={<Login/>} />
-      <Route exact path="/" element={<Signup/>} />
+      <Route exact path="/" element={<Signupp/>} />
       <Route exact path="/netflix" element={<Netflix/>} />
       <Route exact path="/player" element={<Player/>} />
       <Route exact path="/watch" element={<Watch/>} />
