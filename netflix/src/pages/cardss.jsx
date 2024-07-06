@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import video from '../assets/video.mp4';
 import load from '../assets/load.jpg';
-
+import { ThreeDots } from 'react-loader-spinner'
 import { AiOutlineLeft,AiOutlineRight } from 'react-icons/ai';
 import styled from 'styled-components';
 
@@ -14,16 +14,27 @@ export default function Cardss({telugu,english,hindi,upcoming}) {
     const navigate = useNavigate(); 
 
     const [ cookies ,setCookie , removeCookie ] = useCookies("movieId");
-
+/*<ThreeDots
+  visible={true}
+  height="80"
+  width="80"
+  color="#4fa94d"
+  radius="9"
+  ariaLabel="three-dots-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  />*/
   return (
     <Container>
+      <div>
        <div className="swiper">
-           
-          { upcoming && 
+       <h3 style={{marginTop:"3rem"}}>Upcoming Movies</h3>
+          { upcoming 
+          ? 
 
           
           <div className="swiper-body">
-               <h3>Upcoming Movies</h3>
+               
                <div  className='cardslider'>
                 {
                   upcoming.map((movie,index) => (
@@ -42,21 +53,27 @@ export default function Cardss({telugu,english,hindi,upcoming}) {
               <AiOutlineLeft className='left' />
               <AiOutlineRight className='right'/>
           </div>
-          
-          }
-        </div>
-        <div className="swiper">
-           
-          { telugu && 
+          : 
+            <div className='loader'>
+               <ThreeDots visible={true} height="80" width="80" color="#E50914" radius="9" ariaLabel="three-dots-loading" wrapperStyle={{}} wrapperClass=""/>
+            </div>
+              }
+          <div>
+            </div>
 
           
+          
+        </div>
+        <div className="swiper">
+        <h3 style={{marginTop:"3rem"}}>Latest telugu</h3>
+          { telugu ?
           <div className="swiper-body">
-               <h3>Latest telugu</h3>
-               <div  className='cardslider'>
+               
+                <div  className='cardslider'>
                 {
                   telugu.map((movie,index) => (
                           <div onClick={()=> (setCookie("movieId",movie.id),navigate("/watch"))} >
-                             <img   key={movie.id}  src={movie.poster} />
+                              <img   key={movie.id}  src={movie.poster} />
                           </div>
 
                   )
@@ -65,17 +82,23 @@ export default function Cardss({telugu,english,hindi,upcoming}) {
               </div>
               <AiOutlineLeft className='left' />
               <AiOutlineRight className='right'/>
-          </div>
+          </div> 
+            : 
+            <div className='loader'>
+            <ThreeDots visible={true} height="80" width="80" color="#E50914" radius="9" ariaLabel="three-dots-loading" wrapperStyle={{}} wrapperClass=""/>
+            </div>
+                  
+          
           
           }
         </div>
         <div className="swiper">
-           
-          { hindi && 
+        <h3 style={{marginTop:"3rem"}}>Latest Hindi</h3>
+          { hindi ?
 
           
           <div className="swiper-body">
-               <h3>Latest Hindi</h3>
+               
                <div  className='cardslider'>
                 {
                   hindi.map((movie,index) => (
@@ -90,16 +113,20 @@ export default function Cardss({telugu,english,hindi,upcoming}) {
               <AiOutlineLeft className='left' />
               <AiOutlineRight className='right'/>
           </div>
+          :
+          <div className='loader'>
+          <ThreeDots visible={true} height="80" width="80" color="#E50914" radius="9" ariaLabel="three-dots-loading" wrapperStyle={{}} wrapperClass=""/>
+         </div>
           
           }
         </div>
         <div className="swiper">
-           
-          { english && 
+        <h3 style={{marginTop:"3rem"}}>Recent English</h3>
+          { english ?
 
           
           <div className="swiper-body">
-               <h3>Recent English</h3>
+               
                <div  className='cardslider'>
                 {
                   english.map((movie,index) => (
@@ -114,13 +141,17 @@ export default function Cardss({telugu,english,hindi,upcoming}) {
               <AiOutlineLeft className='left' />
               <AiOutlineRight className='right'/>
           </div>
+          :
+          <div className='loader'>
+          <ThreeDots visible={true} height="80" width="80" color="#E50914" radius="9" ariaLabel="three-dots-loading" wrapperStyle={{}} wrapperClass=""/>
+          </div>
           
           }
         </div>
         <div className='footerr'>
         <Footer/>
          </div>
-        
+      </div>
     </Container>
   )
 }
@@ -189,6 +220,13 @@ const Container = styled.div`
      z-index:1;
     }
   }
+  }
+  .loader{
+   height:15rem;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+  
   }
 `;
 

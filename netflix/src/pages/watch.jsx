@@ -71,7 +71,7 @@ export default function Watch() {
           <div>
           <button>Trailer<PiVideoCameraFill />
           </button>
-          <ReactPlayer className="video" controls url={video} light={true} />
+          <ReactPlayer className="video" controls url={currentMovieData.trailer} light={true} />
           </div>
 
         </div>
